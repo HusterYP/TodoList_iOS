@@ -39,7 +39,8 @@
     }
     
     [self.navigationController.navigationBar setHidden:NO];
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    UIBarButtonItem *leftButtomItem = [[UIBarButtonItem alloc] initWithTitle:nil style:UIBarButtonItemStyleDone target:self action:nil];
+    self.navigationItem.leftBarButtonItem = leftButtomItem;
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStyleDone target:self action:@selector(addItem)];
     self.navigationItem.rightBarButtonItem = rightItem;
     tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
@@ -78,6 +79,34 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Click Item");
     [tableView deselectRowAtIndexPath:indexPath animated:true];
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @"删除";
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        if (dataBeans.count > indexPath.row) {
+            DataBean *deleteBean = dataBeans[indexPath.row];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:deleteBean.title message:@"Are you sure to delete the item ?" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *yes = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [dataBeans removeObjectAtIndex:indexPath.row];
+                [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+                [self saveData];
+            }];
+            [alert addAction:yes];
+            
+            UIAlertAction *no = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:nil];
+            [alert addAction:no];
+            
+            [self presentViewController:alert animated:true completion:nil];
+        }
+    }
 }
 
 - (void) addItem {
