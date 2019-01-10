@@ -77,7 +77,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"Click Item");
+    AddItemViewController *viewController = [[AddItemViewController alloc] initWithOldData:dataBeans[indexPath.row] index:indexPath.row];
+    viewController.delegate = self;
+    [self.navigationController pushViewController:viewController animated:true];
     [tableView deselectRowAtIndexPath:indexPath animated:true];
 }
 
@@ -95,7 +97,7 @@
             DataBean *deleteBean = dataBeans[indexPath.row];
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:deleteBean.title message:@"Are you sure to delete the item ?" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *yes = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                [dataBeans removeObjectAtIndex:indexPath.row];
+                [self->dataBeans removeObjectAtIndex:indexPath.row];
                 [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
                 [self saveData];
             }];
@@ -110,7 +112,7 @@
 }
 
 - (void) addItem {
-    AddItemViewController *addItem = [[AddItemViewController alloc] initWithNibName:nil bundle:nil];
+    AddItemViewController *addItem = [[AddItemViewController alloc] initWithOldData:nil index:-1];
     addItem.delegate = self;
     [self.navigationController pushViewController:addItem animated:true];
 }
@@ -120,6 +122,14 @@
     [dataBeans addObject:newBean];
     [tableView reloadData];
     [self saveData];
+}
+
+- (void)updateOldBeanAtIndex:(int)oldBeanIndex newBean:(DataBean *)newBean {
+    if (oldBeanIndex < dataBeans.count) {
+        dataBeans[oldBeanIndex] = newBean;
+        [tableView reloadData];
+        [self saveData];
+    }
 }
 
 - (void)saveData {
