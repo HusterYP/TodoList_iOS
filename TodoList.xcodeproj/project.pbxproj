@@ -15,6 +15,8 @@
 		8F560DE621E472E8001D7D25 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F560DE521E472E8001D7D25 /* main.m */; };
 		8F8831EE21E4787F0051780D /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F8831ED21E4787F0051780D /* CustomCell.m */; };
 		8F8831F121E479FC0051780D /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F8831F021E479FC0051780D /* SplashViewController.m */; };
+		8F8831F521E48A540051780D /* AddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F8831F421E48A540051780D /* AddItemViewController.m */; };
+		8F8831FB21E4AF140051780D /* DataBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F8831FA21E4AF140051780D /* DataBean.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,10 @@
 		8F8831EF21E478930051780D /* CustomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		8F8831F021E479FC0051780D /* SplashViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		8F8831F221E47C6F0051780D /* SplashViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
+		8F8831F321E48A470051780D /* AddItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddItemViewController.h; sourceTree = "<group>"; };
+		8F8831F421E48A540051780D /* AddItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddItemViewController.m; sourceTree = "<group>"; };
+		8F8831F921E4AF0B0051780D /* DataBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataBean.h; sourceTree = "<group>"; };
+		8F8831FA21E4AF140051780D /* DataBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataBean.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +76,10 @@
 				8F8831F021E479FC0051780D /* SplashViewController.m */,
 				8F560DD921E472E6001D7D25 /* ViewController.h */,
 				8F560DDA21E472E6001D7D25 /* ViewController.m */,
+				8F8831F921E4AF0B0051780D /* DataBean.h */,
+				8F8831FA21E4AF140051780D /* DataBean.m */,
+				8F8831F321E48A470051780D /* AddItemViewController.h */,
+				8F8831F421E48A540051780D /* AddItemViewController.m */,
 				8F8831ED21E4787F0051780D /* CustomCell.m */,
 				8F8831EF21E478930051780D /* CustomCell.h */,
 				8F560DEC21E4730F001D7D25 /* Supporting Files */,
@@ -160,8 +170,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F8831F121E479FC0051780D /* SplashViewController.m in Sources */,
+				8F8831F521E48A540051780D /* AddItemViewController.m in Sources */,
 				8F560DDB21E472E6001D7D25 /* ViewController.m in Sources */,
 				8F560DE621E472E8001D7D25 /* main.m in Sources */,
+				8F8831FB21E4AF140051780D /* DataBean.m in Sources */,
 				8F8831EE21E4787F0051780D /* CustomCell.m in Sources */,
 				8F560DD821E472E6001D7D25 /* AppDelegate.m in Sources */,
 			);

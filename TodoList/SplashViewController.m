@@ -30,7 +30,8 @@
 - (void)viewDidAppear:(BOOL)animated {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, 2ull * NSEC_PER_SEC);
+        // TODO change the time
+        dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, 0ull * NSEC_PER_SEC);
         dispatch_after(time, dispatch_get_main_queue(), ^{
             [self.navigationController pushViewController:[[ViewController alloc] initWithNibName:nil bundle:nil] animated:true];
         });

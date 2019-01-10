@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AddItemViewController.h"
 
-@interface ViewController : UIViewController
 
+@interface ViewController : UIViewController<AddItemDelegate>
 
 @end
+
 
